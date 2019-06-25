@@ -13,5 +13,5 @@ test("pop should be return hola ", () => {
 });
 
 test("pop should be return [3, 55] ", () => {
-  expect(pop(array3)).toBe([3, 55]);
+  expect(pop(array3)).toStrictEqual([3, 55]);
 });

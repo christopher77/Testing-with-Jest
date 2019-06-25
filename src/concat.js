@@ -1,8 +1,8 @@
-function concat(array1, ...array2) {
-  for (let i in array2) {
-    array1.push(array2[i]);
+const concat = (arr, ...elements) => {
+  for (let index = 0; index < elements.length; index++) {
+    arr.push(elements[index]);
   }
-  return array1;
-}
+  return arr;
+};
 
 export default concat;
