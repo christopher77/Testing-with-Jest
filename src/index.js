@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// index.js
+import React from "react";
+import { render } from "react-dom";
+import { Map, TileLayer, Marker } from "react-leaflet";
+import useGeolocation from "./use-geolocation";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function App() {
+  const { latitude, longitude } = useGeolocation();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  return (
+    <Map center={[latitude, longitude]} zoom={15}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors | Made for Codeable'
+      />
+      <Marker position={[latitude, longitude]} />
+    </Map>
+  );
+}
+
+const $root = document.getElementById("root");
+render(<App />, $root);
